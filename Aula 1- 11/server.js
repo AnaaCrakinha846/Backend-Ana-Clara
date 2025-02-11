@@ -21,3 +21,4 @@ mela.get("/home", (req, res) => {
 mela.listen(port, () => { 
     console.log("Servidor rodando na porta", port);
 });
+
