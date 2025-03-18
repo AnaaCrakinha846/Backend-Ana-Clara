@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const { json } = require("express");
 
-class userSevice {
+class userService {
     constructor(){
         this.filePath = path.join(__dirname, 'user.json');    
         this.users = this.loadUsers();
@@ -62,13 +62,22 @@ class userSevice {
         }
     }
 
+    deleteUser(id){
+        try{
+            this.users = this.users.filter(user => user.id !== id);
+            this.saveUsers();
+        }catch(erro){
+            console.log('Erro ao deletar usuário', erro)
+        }
+    }
+
     getUsers(){
         try{
             return this.users;
-        } catch (erro){
+        } catch(erro){
             console.log("Erro ao buscar usuários", erro);
         }
     }
 }
 
-module.exports = new userSevice;
+module.exports = new userService;
