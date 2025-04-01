@@ -2,6 +2,7 @@ const User = require("./user");
 const path = require("path");
 const fs = require("fs");
 const { json } = require("express");
+const bcrypt = require("bcryptjs");
 
 class userService {
     constructor(){
@@ -39,15 +40,28 @@ class userService {
         }
     }
 
-    addUser(nome, email, senha, endereco, telefone, cpf){
+
+    async addUser(nome, email, senha, endereco, telefone, cpf){
+
+        console.log(nome, email, senha, endereco, telefone, cpf);
+        
         try {
-            // Verificação de campos obrigatórios
+
+            const cpfexistente = this.users.some(user => user.cpf === cpf);
+            if (cpfexistente) {
+                throw new error("CPF já cadastrado em seu login!")
+            }
+
             if (!nome || !email || !senha || !endereco || !telefone || !cpf) {
                 throw new Error("Todos os campos são obrigatórios!");
             }
 
+            const senhacriptografada = await bcrypt.hash(senha, 10);
+            // Verificação de campos obrigatórios
+         
+
             // Criação de um novo usuário com os dados fornecidos
-            const user = new User(this.nextID++, nome, email, senha, endereco, telefone, cpf);
+            const user = new User(this.nextID++, nome, email, senhacriptografada, endereco, telefone, cpf);
             
             
             // Adiciona o usuário ao array
@@ -61,6 +75,7 @@ class userService {
             console.log("Erro ao adicionar usuário", erro);
         }
     }
+
 
     deleteUser(id){
         try{
