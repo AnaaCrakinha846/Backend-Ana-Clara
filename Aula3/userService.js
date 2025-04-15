@@ -23,7 +23,7 @@ class userService {
 
             }
         } catch (erro) { //se der erro, vai guardar e mostrar o erro aqui
-            comsole.log("Erro ao carregar arquivo", erro)
+            console.log("Erro ao carregar arquivo", erro)
         }
         return [];
     }
@@ -48,16 +48,12 @@ class userService {
 
     async addUser(nome, email, senha, endereco, telefone, cpf) { // função assincrona ela espera algo acontecer dentro para funcionar. Precisa de um sincronismo
         try {
-            const cpfexiste = this.users.some(user => user.cpf = cpf)
-            if (cpfexiste) {
-                throw new Error("CPF já cadastrado");
-            }
 
             const senhaCripto = await bcrypt.hash(senha, 10);            //o await vai esperar a função rodar 
             const resultados = await mysql.execute(
-                `INSERT INTO usuários (Nome, Email, Senha, Endereço, Telefone, CPF)
-                  VALUES('?', '?', '?', '?', '?', '?');`
-                  [nome, email, senhaCripto, endereço, telefone, cpf]
+                `INSERT INTO usuario (Nome, Email, Senha, Endereco, Telefone, CPF)
+                  VALUES(?, ?, ?, ?, ?, ?);`,
+                  [nome, email, senhaCripto, endereco, telefone, cpf]
               )
               return resultados
 
@@ -85,27 +81,30 @@ class userService {
         }
     }
 
-    updateUser(id, nome, email, senha, endereco, telefone, cpf) {
-        try {
-            const cpfexiste = this.users.some(user => user.cpf = cpf)
-            if (cpfexiste) {
-                throw new Error("CPF já cadastrado");
-            }
-            const user = this.users.find(user => user.id == id);
-            if (!user) return console.log("Usuário não existente/encontrado");
-            user.nome = nome;
-            user.email = email;
-            user.senhaCripto = senha;
-            user.endereco = endereco;
-            user.telefone = telefone;
-            user.cpf = cpf;
-            this.saveUsers();
-            return user;
-        } catch (erro) {
-            console.log("Erro ao atualizar o usuário", erro)
-            throw erro;
-        }
-    }
-}
+   
+            
+         async updateUser(id, nome, email, senha, endereco, telefone, cpf) {
+                try {
+                    const senhaCripto = await bcrypt.hash(senha, 10);
 
-module.exports = new userService;
+                    // Atualiza os dados no banco de dados
+                    const resultados = await mysql.execute(
+                        `UPDATE usuario
+                         SET nome = ?, email = ?, telefone = ?, endereco = ?, cpf = ?, senha = ?
+                         WHERE id = ?;`,
+                        [nome, email, telefone, endereco, cpf, senha, id]
+                    );
+            
+                    return resultados;
+                } catch (erro){
+                    console.log("Erro ao atualizar o usuário", erro);
+                    throw erro;
+                }
+            }
+            
+        }
+
+
+    
+
+module.exports = new userService();

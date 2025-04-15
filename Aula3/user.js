@@ -8,5 +8,6 @@ class User {
         this.telefone = telefone;
         this.cpf = cpf;
     }
+    
 }
 module.exports = User

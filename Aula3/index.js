@@ -16,7 +16,8 @@ app.post("/users", async (req, res) => {
                 ({ error: "Todos os campos são obrigatórios" })
         }
         const user = await userService.addUser(nome, email, senha, endereco, telefone, cpf);
-        res.status(200).json({ user });
+        res.status(200).json({ "mensagem": "Usuario cadastrado com Sucesso!" });
+        
 
     } catch (erro) {
         res.status(400).json({ error: erro.message });
@@ -45,6 +46,7 @@ app.delete("/users/:id", (req, res) => {
         res.status(400).json({ error: erro.message });
     }
 })
+
 
 const port = 3000;
 app.listen(port, () => {

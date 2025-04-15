@@ -1,1 +1,83 @@
-[{"id":2,"nome":"Ana Clara","email":"clarinha@gmail.com","senha":"1234","endereco":"Rua dos Ricos de Tupã, 885","telefone":"(18)99728-2155","cpf":"54609876430"},{"id":3,"nome":"Ana Clara","email":"clarinha@gmail.com","senha":"1234","endereco":"Rua dos Ricos de Tupã, 885","telefone":"(18)99728-2155","cpf":"54609876430"},{"id":4,"nome":"LUCICLELDIMA","email":"LULU@gmail.com","senha":"1234LU","endereco":"rUA AUGUSTO DAS FLORES, 885","telefone":"(18)99728-9855","cpf":"54607676430"},{"id":5,"nome":"LUCICLELDIMA","email":"LULU@gmail.com","senha":"$2b$10$cVt9PZNJkLRfpqWCjGWqAO5JeoUifFWoTPbxcaZMqyra3VL5Q6X0W","endereco":"rUA AUGUSTO DAS FLORES, 885","telefone":"(18)99728-9855","cpf":"54607676430"},{"id":6,"nome":"LUCICLELDIMA","email":"LULU@gmail.com","senha":"$2b$10$606sjs6UUgYkDjFCHOBRgOiUzz4U69aVP3hJ3OB1rVnE4izl503D2","endereco":"rUA AUGUSTO DAS FLORES, 885","telefone":"(18)99728-9855","cpf":"54607676430"},{"id":7,"nome":"LUCICLELDIMA","email":"LULU@gmail.com","senha":"$2b$10$HeoazHKuXkvBG31X7xxDWuEQQg9p.QQo63D103tP7nZIiOTgAz4zW","endereco":"rUA AUGUSTO DAS FLORES, 885","telefone":"(18)99728-9855","cpf":"54607676430"},{"id":8,"nome":"LUCICLELDIMA","email":"LULU@gmail.com","senha":"$2b$10$0QhTNC0pGRUkk3C0fR4oIuwKR46sh.5jgZr782qudlmheyDzKBpP.","endereco":"rUA AUGUSTO DAS FLORES, 885","telefone":"(18)99728-9855","cpf":"54607676430"},{"id":9,"nome":"LUCICLELDIMA","email":"LULU@gmail.com","senha":"$2b$10$7dESvkxFZIMFpnxojwXgpOov7PXO.ELxI06yl1Pi9eJhp82N4ppQe","endereco":"rUA AUGUSTO DAS FLORES, 885","telefone":"(18)99728-9855","cpf":"54607676430"},{"id":10,"nome":"LUCICLELDIMA","email":"LULU@gmail.com","senha":"$2b$10$008wk8NyoJsaCcobtH2Yc.ZWZZ/sMufQRw9XwSm./hlBOQJVjLvnO","endereco":"RUA AUGUSTO DAS FLORES, 885","telefone":"(18)99728-9855","cpf":"54607777640"}]
+[
+    {
+        "id": 2,
+        "nome": "Ana Clara",
+        "email": "clarinha@gmail.com",
+        "senha": "1234",
+        "endereco": "Rua dos Ricos de Tupã, 885",
+        "telefone": "(18)99728-2155",
+        "cpf": "54609876430"
+    },
+    {
+        "id": 3,
+        "nome": "Ana Clara",
+        "email": "clarinha@gmail.com",
+        "senha": "1234",
+        "endereco": "Rua dos Ricos de Tupã, 885",
+        "telefone": "(18)99728-2155",
+        "cpf": "54609876430"
+    },
+    {
+        "id": 4,
+        "nome": "LUCICLELDIMA",
+        "email": "LULU@gmail.com",
+        "senha": "1234LU",
+        "endereco": "rUA AUGUSTO DAS FLORES, 885",
+        "telefone": "(18)99728-9855",
+        "cpf": "54607676430"
+    },
+    {
+        "id": 5,
+        "nome": "LUCICLELDIMA",
+        "email": "LULU@gmail.com",
+        "senha": "$2b$10$cVt9PZNJkLRfpqWCjGWqAO5JeoUifFWoTPbxcaZMqyra3VL5Q6X0W",
+        "endereco": "rUA AUGUSTO DAS FLORES, 885",
+        "telefone": "(18)99728-9855",
+        "cpf": "54607676430"
+    },
+    {
+        "id": 6,
+        "nome": "LUCICLELDIMA",
+        "email": "LULU@gmail.com",
+        "senha": "$2b$10$606sjs6UUgYkDjFCHOBRgOiUzz4U69aVP3hJ3OB1rVnE4izl503D2",
+        "endereco": "rUA AUGUSTO DAS FLORES, 885",
+        "telefone": "(18)99728-9855",
+        "cpf": "54607676430"
+    },
+    {
+        "id": 7,
+        "nome": "LUCICLELDIMA",
+        "email": "LULU@gmail.com",
+        "senha": "$2b$10$HeoazHKuXkvBG31X7xxDWuEQQg9p.QQo63D103tP7nZIiOTgAz4zW",
+        "endereco": "rUA AUGUSTO DAS FLORES, 885",
+        "telefone": "(18)99728-9855",
+        "cpf": "54607676430"
+    },
+    {
+        "id": 8,
+        "nome": "LUCICLELDIMA",
+        "email": "LULU@gmail.com",
+        "senha": "$2b$10$0QhTNC0pGRUkk3C0fR4oIuwKR46sh.5jgZr782qudlmheyDzKBpP.",
+        "endereco": "rUA AUGUSTO DAS FLORES, 885",
+        "telefone": "(18)99728-9855",
+        "cpf": "54607676430"
+    },
+    {
+        "id": 9,
+        "nome": "LUCICLELDIMA",
+        "email": "LULU@gmail.com",
+        "senha": "$2b$10$7dESvkxFZIMFpnxojwXgpOov7PXO.ELxI06yl1Pi9eJhp82N4ppQe",
+        "endereco": "rUA AUGUSTO DAS FLORES, 885",
+        "telefone": "(18)99728-9855",
+        "cpf": "54607676430"
+    },
+    {
+        "id": 10,
+        "nome": "LUCICLELDIMA",
+        "email": "LULU@gmail.com",
+        "senha": "$2b$10$008wk8NyoJsaCcobtH2Yc.ZWZZ/sMufQRw9XwSm./hlBOQJVjLvnO",
+        "endereco": "RUA AUGUSTO DAS FLORES, 885",
+        "telefone": "(18)99728-9855",
+        "cpf": "54607777640"
+    }
+]
