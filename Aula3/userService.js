@@ -9,75 +9,68 @@ const mysql = require("./mysql")
 //mas se quer comecar com um outro id, precida por aqui
 
 class userService {
-    constructor() {
-        this.filePath = path.join(__dirname, 'user.json');//caminho do arquivo 
-        this.users = this.loadUser(); //array pra armazenar usuários 
-        this.nextID = this.getNexID(); //contador e gerador de ID
-    }
-
-  
-
-    
-
-    async addUser(nome, email, senha, endereco, telefone, cpf) { // função assincrona ela espera algo acontecer dentro para funcionar. Precisa de um sincronismo
+    async addUser(nome, email, senha, endereco, telefone, cpf) {
         try {
 
-            const senhaCripto = await bcrypt.hash(senha, 10);            //o await vai esperar a função rodar 
+            const senhaCripto = await bcrypt.hash(senha, 10);
             const resultados = await mysql.execute(
                 `INSERT INTO usuario (Nome, Email, Senha, Endereco, Telefone, CPF)
                   VALUES(?, ?, ?, ?, ?, ?);`,
-                  [nome, email, senhaCripto, endereco, telefone, cpf]
-              )
-              return resultados
+                [nome, email, senhaCripto, endereco, telefone, cpf]
+            )
+            return resultados
 
         } catch (erro) {
-            
+
             throw erro;
         }
     }
 
-    getUser() {
+    async getUsers(id) { // função assincrona ela espera algo acontecer dentro para funcionar. Precisa de um sincronismo
         try {
-            return this.users
+            const resultado = await mysql.execute(
+                `SELECT idusuario FROM usuario WHERE ID = ?`,
+                [id]
+
+            );
+            return resultado;
+
         } catch (erro) {
-            console.log("Erro ao carregar arquivo", erro)
+            console.log("Erro ao carregar arquivo", erro);
         }
     }
 
-    deleteUser(id) {
+     async deleteUser(id) {
         try {
-            this.users = this.users.filter(user => user.id !== id); //cria um novo aray, não colocando o id selecionado 
-            this.saveUsers();
-        }
-        catch {
-            console.log("Erro ao carregar arquivo", erro)
+            const user =await this.get.User(id);
+            if (user.length == 0) {
+                console.log("Usuário não existe");
+                return;
+
+            }
+        } catch {
+            console.log("Erro ao deletar usuário", erro);
         }
     }
 
-   
-            
-         async updateUser(id, nome, email, senha, endereco, telefone, cpf) {
-                try {
-                    const senhaCripto = await bcrypt.hash(senha, 10);
+    async updateUser(id, nome, email, senha, endereco, telefone, cpf) {
+        try {
+            const senhaCripto = await bcrypt.hash(senha, 10);
 
-                    // Atualiza os dados no banco de dados
-                    const resultados = await mysql.execute(
-                        `UPDATE usuario
+            // Atualiza os dados no banco de dados
+            const resultados = await mysql.execute(
+                `UPDATE usuario
                          SET nome = ?, email = ?, telefone = ?, endereco = ?, cpf = ?, senha = ?
                          WHERE id = ?;`,
-                        [nome, email, telefone, endereco, cpf, senha, id]
-                    );
-            
-                    return resultados;
-                } catch (erro){
-                    console.log("Erro ao atualizar o usuário", erro);
-                    throw erro;
-                }
-            }
-            
+                [nome, email, telefone, endereco, cpf, senha, id]
+            );
+
+            return resultados;
+        } catch (erro) {
+            console.log("Erro ao atualizar o usuário", erro);
+            throw erro;
         }
+    }
+}
 
-
-    
-
-module.exports = new userService();
+module.exports = new userService;
