@@ -34,6 +34,20 @@ app.get("/users", (req, res) => {
 }
 );
 
+async deleteUser(id) {
+    try {
+        const user = await this.getUser(id);
+        if (user.length == 0) {
+            console.log("Usuário não existe");
+            return;
+        }
+
+
+   const resultado = await mysql.execute(
+        `DELETE FROM usuario WHERE ID = ?`,
+        [id]
+    );
+    return resultado;
 
 //Rota para excluir um usuário pelo ID
 app.delete("/users/:id", (req, res) => {
